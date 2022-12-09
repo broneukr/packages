@@ -1,0 +1,54 @@
+{
+  "private": false,
+  "license": "MIT",
+  "version": "0.0.0",
+  "name": "@jeromefitz/release-notes-generator",
+  "description": "Custom Release Note Generator for Semantic Release.",
+  "author": {
+    "name": "Jerome Fitzgerald",
+    "email": "j@jeromefitzgerald.com",
+    "url": "https://jeromefitzgerald.com"
+  },
+  "repository": "jeromefitz/packages.git",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf .turbo && rm -rf dist",
+    "clean:install": "pnpm run clean && rm -rf node_modules",
+    "copy": "mkdir -p ./dist && ./scripts/copy.sh",
+    "dev": "tsup --watch",
+    "format:lint": "pnpm run lint:eslint --fix && pnpm run format:prettier --write",
+    "format:prettier": "prettier \"./src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}\" --ignore-unknown --loglevel warn",
+    "lint": "pnpm run format:prettier --check && pnpm run lint:eslint",
+    "lint:eslint": "eslint ./src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "@octokit/rest": "19.0.5",
+    "conventional-commits-filter": "2.0.7",
+    "conventional-commits-parser": "3.2.4",
+    "date-fns": "2.29.3",
+    "import-from": "4.0.0",
+    "read-pkg-up": "7.0.1",
+    "semver": "7.3.8"
+  },
+  "devDependencies": {
+    "@types/conventional-commits-parser": "3.0.2",
+    "@types/lodash": "4.14.191",
+    "@types/read-pkg-up": "6.0.0",
+    "lodash": "4.17.21"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.21"
+  }
+}
