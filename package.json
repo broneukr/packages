@@ -1,13 +1,6 @@
 {
   "private": true,
-  "license": "MIT",
-  "name": "@jeromefitz/packages",
-  "author": {
-    "name": "Jerome Fitzgerald",
-    "email": "j@jeromefitzgerald.com",
-    "url": "https://jeromefitzgerald.com"
-  },
-  "repository": "jeromefitz/packages.git",
+
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
